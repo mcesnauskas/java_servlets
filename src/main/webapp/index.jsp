@@ -14,5 +14,10 @@
                 HTTP methods
          </a>
      </div>
+     <div>
+             <a id="lifecycle" href="http://localhost:8072/java_servlets/users/detail">
+                     User details
+              </a>
+          </div>
 </body>
 </html>
