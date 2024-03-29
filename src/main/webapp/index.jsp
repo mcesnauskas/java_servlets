@@ -1,5 +1,13 @@
 <html>
+    <head>
+    <meta charset="UTF-8">
+        <title>Main</title>
+    </head>
 <body>
-<h2>Mindaugas says Hello World!</h2>
+    <div>
+        <a id="lifecycle" href="http://localhost:8072/java_servlets/lifecycle">
+            Servlet lifecycle
+        </a>
+    </div>
 </body>
 </html>
