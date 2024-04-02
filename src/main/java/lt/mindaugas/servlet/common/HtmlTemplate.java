@@ -1,5 +1,6 @@
 package lt.mindaugas.servlet.common;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class HtmlTemplate {
@@ -75,19 +76,19 @@ public class HtmlTemplate {
                     <div>
                         <br>
                         <div class="container">
-                            <a id="sudeti" href="http://localhost:8072/java_servlets/calculator/sudeti" >Sudeti</a>
+                            <a id="sudeti" href="http://localhost:8072/java_servlets/calculator/sudeti">Sudeti</a>
                         </div>
                         <div class="container">
-                            <a id="atimti" href="/atimti">Atimti</a>
+                            <a id="atimti" href="http://localhost:8072/java_servlets/calculator/atimti">Atimti</a>
                         </div>
                         <div class="container">
-                            <a id="padauginti" href="/padauginti">Padauginti</a>
+                            <a id="padauginti" href="http://localhost:8072/java_servlets/calculator/padauginti">Padauginti</a>
                         </div>
                         <div class="container">
-                            <a id="padalinti"href="/padalinti">Padalinti</a>
+                            <a id="padalinti"href="http://localhost:8072/java_servlets/calculator/padalinti">Padalinti</a>
                         </div>
                         <div class="container">
-                            <a id="palyginti" href="/palyginti">Palygink skaicius</a>
+                            <a id="palyginti" href="http://localhost:8072/java_servlets/calculator/palyginti">Palygink skaicius</a>
                         </div>
                     </div>
                     """;
@@ -110,5 +111,24 @@ public class HtmlTemplate {
                 </div>
             </div>
         """.formatted(message, veiksmas, a, b, suma);
+    }
+
+    public static String getCompareTemplate(String message, String veiksmas, String numbers, double result) {
+        return """
+        <div>
+                <div class="container">
+                    %1$s
+                    <form action="/java_servlets/calculator/%2$s" method="get">
+                        <label for="numbers">Skaiciai palyginimui</label>
+                        <input type="text" id="numbers" name="numbers" value="%3$s">
+                       
+                        <button type="compare">%2$S</button>
+                    </form>
+                </div>
+                <div class="container">
+                    <p>Rezultatas: %4$.2f</p>
+                </div>
+            </div>
+        """.formatted(message, veiksmas, numbers, result);
     }
 }
