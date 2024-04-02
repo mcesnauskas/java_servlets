@@ -90,6 +90,9 @@ public class HtmlTemplate {
                         <div class="container">
                             <a id="palyginti" href="http://localhost:8072/java_servlets/calculator/palyginti">Palygink skaicius</a>
                         </div>
+                        <div class="container">
+                            <a id="palyginti" href="http://localhost:8072/java_servlets/calculator/skaiciuok">Skaiciuok</a>
+                        </div>
                     </div>
                     """;
 
@@ -130,5 +133,23 @@ public class HtmlTemplate {
                 </div>
             </div>
         """.formatted(message, veiksmas, numbers, result);
+    }
+
+    public static String getCalculate(String message, String action, String input, double result) {
+        return """
+            <div>
+                <div class="container">
+                    %1$s
+                    <form action="/java_servlets/calculator/%2$s" method="get">
+                        <label for="compare">Palygink skaicius</label>
+                        <input type="text" id="compare" name="calculate" value="%3$s">
+                        <button type="submit">%2$S</button>
+                    </form>
+                </div>
+                <div class="container">
+                    <p>Rezultatas: %4$s</p>
+                </div>
+            </div>
+            """.formatted(message, action.toLowerCase(), input, result);
     }
 }
