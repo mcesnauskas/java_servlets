@@ -15,9 +15,14 @@
          </a>
      </div>
      <div>
-             <a id="lifecycle" href="http://localhost:8072/java_servlets/users/detail">
-                     User details
-              </a>
-          </div>
+         <a id="lifecycle" href="http://localhost:8072/java_servlets/users/detail">
+             User details
+         </a>
+     </div>
+     <div>
+         <a id="lifecycle" href="http://localhost:8072/java_servlets/calculator">
+              Kids Calculator
+         </a>
+     </div>
 </body>
 </html>

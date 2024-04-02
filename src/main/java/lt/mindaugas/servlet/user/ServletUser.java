@@ -32,7 +32,7 @@ public class ServletUser extends HttpServlet {
             user = new User(0, "", "", "", "");
         }
 
-        writer.write(HtmlTemplate.htmlStart.formatted("User Details"));
+        writer.write(HtmlTemplate.htmlStart.apply("User Details"));
         writer.write(
                 HtmlTemplate.formUserDetails.formatted(
                         "/java_servlets/users/detail",
@@ -59,7 +59,7 @@ public class ServletUser extends HttpServlet {
                 req.getParameter("phone")
         );
 
-        writer.write(HtmlTemplate.htmlStart.formatted("User Details"));
+        writer.write(HtmlTemplate.htmlStart.apply("User Details"));
         writer.write("<h>NEW USER WAS CREATED</h1>");
         writer.write("<p>Id: %s</p>".formatted(user.id()));
         writer.write("<p>First name: %s</p>".formatted(user.firstName()));

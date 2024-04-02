@@ -1,23 +1,41 @@
 package lt.mindaugas.servlet.common;
 
+import java.util.function.Function;
+
 public class HtmlTemplate {
 
-    public static final String htmlStart =
-            """
-                    <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <title>%s</title>
-                        </head>
-                        <body>
-                    """;
+    public static Function<String, String> htmlStart =
+            (message) -> {
+                return """
+                        <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>%s</title>
+                            </head>
+                            <body>
+                        """.formatted(message);
+            };
 
     public static final String htmlEnd =
             """
                     </body>
                     </html>
+                    """;
+
+    public static final String htmlBackToMenu =
+            """
+                    <div class="container">
+                        <a id="calculator" href="http://localhost:8072/java_servlets">back to Menu</a>
+                    </div>
+                    """;
+
+    public static final String htmlBackToCalculatorMenu =
+            """
+                    <div class="container">
+                        <a id="calculator" href="http://localhost:8072/java_servlets/calculator">back to Calculator Menu</a>
+                    </div>
                     """;
 
     public static final String formUserDetails =
@@ -51,4 +69,46 @@ public class HtmlTemplate {
                             <input type="submit" value="Submit">
                     </form>
                     """;
+
+    public static String htmlCalculatorMenu =
+            """
+                    <div>
+                        <br>
+                        <div class="container">
+                            <a id="sudeti" href="http://localhost:8072/java_servlets/calculator/sudeti" >Sudeti</a>
+                        </div>
+                        <div class="container">
+                            <a id="atimti" href="/atimti">Atimti</a>
+                        </div>
+                        <div class="container">
+                            <a id="padauginti" href="/padauginti">Padauginti</a>
+                        </div>
+                        <div class="container">
+                            <a id="padalinti"href="/padalinti">Padalinti</a>
+                        </div>
+                        <div class="container">
+                            <a id="palyginti" href="/palyginti">Palygink skaicius</a>
+                        </div>
+                    </div>
+                    """;
+
+    public static String getArithmeticTemplate(String message, String veiksmas, String a, String b, double suma) {
+        return """
+        <div>
+                <div class="container">
+                    %1$s
+                    <form action="/java_servlets/calculator/%2$s" method="get">
+                        <label for="a">Pirmas skaicius</label>
+                        <input type="text" id="a" name="a" value="%3$s">
+                        <label for="b">Antras skaicius</label>
+                        <input type="text" id="b" name="b" value="%4$s">
+                        <button type="submit">%2$S</button>
+                    </form>
+                </div>
+                <div class="container">
+                    <p>Rezultatas: %5$.2f</p>
+                </div>
+            </div>
+        """.formatted(message, veiksmas, a, b, suma);
+    }
 }
